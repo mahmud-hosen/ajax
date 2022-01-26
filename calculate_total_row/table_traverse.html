@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery.js"></script>
+
+    <script>
+
+        function gradeTable() {
+
+            $(document).ready(function () {
+
+                const courseWorkInfo = new Array();
+                let Quiz = 0; Mid = 0; Final = 0; Sum = 0; quiz1 = 0; quiz2 = 0; quiz3 = 0;
+                let QuizselectedOption;
+
+                var rows = $('table>thead>tr'); // all browsers always create the tbody element in DOM
+                for (var i = 0; i < rows.length; i++) {
+
+                    var cells = rows.eq(i).children('th');
+                    for (var j = 1; j < ((cells.length) - 2); j++) {
+                        var titleId = cells.eq(j).find('input').val();
+                        var titleName = cells.eq(j).text();
+
+                        courseWorkInfo[titleId] = titleName;
+                    }
+
+                    QuizselectedOption = cells.eq(j).find('option:selected').val();
+                }
+
+
+
+
+                var rows = $('table>tbody>tr'); // all browsers always create the tbody element in DOM
+                for (var i = 0; i < rows.length; i++) {
+                    var cells = rows.eq(i).children('td');
+                    for (var j = 1; j < ((cells.length) - 2); j++) {
+
+                        var cellValue = parseFloat(cells.eq(j).find('input:eq(0)').val());
+                        var cellTitleId = cells.eq(j).find('input:eq(1)').val();
+
+
+
+                        if (courseWorkInfo[cellTitleId] === " Quiz") {
+                            Quiz = cellValue;
+
+                        } else if (courseWorkInfo[cellTitleId] === " Mid") {
+                            Mid = cellValue;
+                        } else if (courseWorkInfo[cellTitleId] === " Final") {
+                            Final = cellValue;
+                        } else if (courseWorkInfo[cellTitleId] === " Quiz-1") {
+                            quiz1 = cellValue;
+
+                        } else if (courseWorkInfo[cellTitleId] === " Quiz-2") {
+                            quiz2 = cellValue;
+
+                        } else if (courseWorkInfo[cellTitleId] === " Quiz-3") {
+                            quiz3 = cellValue;
+
+                        }
+
+
+
+
+
+                        // var cellTitleId = cells.eq(j).find('input:eq(1)').val();
+                        //  cells.eq(j+3).find('.total').html(Sum);
+
+
+
+                    }
+
+
+
+
+                    // Quiz Avg
+                    let quizAvg = ((quiz1 + quiz2 + quiz3) / 3).toFixed(1);
+
+                    //Quiz Max
+                    let quizmax = Math.max(quiz1, quiz2, quiz3);
+
+                    // Quiz Best 2 count
+                    let quizmax1 = Math.max(quiz1, quiz2);
+                    let quizmax2 = Math.max(quiz2, quiz3);
+                    let quizBest2 = ((quizmax1 + quizmax2) / 2);
+
+
+
+                    // console.log(QuizselectedOption)
+
+                    if (QuizselectedOption === "quizAvg") {
+                        // console.log(quizAvg)
+                        cells.eq(j).html(quizAvg);
+
+                    } else if (QuizselectedOption === "quizmax") {
+                        // console.log(quizmax)
+                        cells.eq(j).html(quizmax);
+
+                    } else if (QuizselectedOption === "quizBest2") {
+                        // console.log(quizBest2)
+                        cells.eq(j).html(quizBest2);
+
+                    }
+
+                    let quizSelectedValue = parseFloat(cells.eq(j).html());
+
+                    Sum = (parseFloat(quiz1) + parseFloat(quizSelectedValue));
+
+                    cells.eq(j + 1).html(Sum);
+
+
+
+
+
+
+                }
+
+
+
+
+                // var text2 = cells.eq(1).find('select').val();
+                //var text2 = cells.eq(1).find('select option:selected').html();//alternative, if you want to collect the inner html instead
+
+
+
+
+            });
+        }
+
+
+        $(document).ready(function () {
+
+
+            function getCourseWorkList() {
+
+                const arr = new Array(); // OR var  arr  = [];
+                var rows = $('table>thead>tr'); // all browsers always create the tbody element in DOM
+
+                for (var i = 0; i < rows.length; i++) {
+
+                    var cells = rows.eq(i).children('th');
+
+                    for (var j = 1; j < ((cells.length) - 2); j++) {
+
+                        var courseWorkVal = cells.eq(j).find('input').val();
+                        var courseWork = cells.eq(j).text();
+
+                        arr[courseWork] = courseWorkVal;
+
+                    }
+
+                    // var quiz = cells.eq(j).find('select option:selected').html();//alternative, if you want to collect the inner html instead
+                }
+
+                // alert(arr[courseWork]);
+                //console.log(arr);
+
+                // for (var key in arr) {
+                //     var value = arr[key];
+                //     console.log(key, value);
+                // }   
+            }
+
+        });
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+</head>
+
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+
+
+                <th>Name</th>
+                <th> <input type="hidden" value='f12'>Quiz-1</th>
+                <th> <input type="hidden" value='m12'>Quiz-2</th>
+                <th> <input type="hidden" value='a13'>Quiz-3</th>
+
+
+                <th>
+                    <select class='Q-count'>
+                        <option selected value='quizAvg'>Q-Avg</option>
+                        <option value='quizmax'>Q-Best</option>
+                        <option value='quizBest2'>Q-Best2</option>
+                    </select>
+                </th>
+
+                <th>Avg</th>
+            </tr>
+        </thead>
+        <tbody>
+            <button onclick="gradeTable()">Click me</button>
+
+            <!-- Row -1  -->
+            <tr>
+                <td>Mahmud</td>
+                <td>
+                    <input type="number" name="" value="60.5">
+                    <input type="hidden" name="" value="f12">
+                </td>
+                <td>
+                    <input type="number" name="" value="90">
+                    <input type="hidden" name="" value="m12">
+
+                </td>
+                <td>
+                    <input type="number" name="" value="76">
+                    <input type="hidden" name="" value="a13">
+
+                </td>
+
+                <td class="total"></td>
+                <td class="quizAvg"></td>
+
+            </tr>
+
+            <!-- Row -2 -->
+
+            <tr>
+                <td>Mahmud</td>
+                <td>
+                    <input type="number" name="" value="70.2">
+                    <input type="hidden" name="" value="f12">
+                </td>
+                <td>
+                    <input type="number" name="" value="87">
+                    <input type="hidden" name="" value="m12">
+
+                </td>
+                <td>
+                    <input type="number" name="" value="35">
+                    <input type="hidden" name="" value="a13">
+
+                </td>
+
+                <td class="total"></td>
+                <td class="quizAvg"></td>
+
+            </tr>
+            <!-- Row-3 -->
+            <tr>
+                <td>Mahmud</td>
+                <td>
+                    <input type="number" name="" value="50">
+                    <input type="hidden" name="" value="f12">
+                </td>
+                <td>
+                    <input type="number" name="" value="40">
+                    <input type="hidden" name="" value="m12">
+
+                </td>
+                <td>
+                    <input type="number" name="" value="60">
+                    <input type="hidden" name="" value="a13">
+
+                </td>
+
+                <td class="total"></td>
+                <td class="quizAvg"></td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+<script>
+      
+</script>

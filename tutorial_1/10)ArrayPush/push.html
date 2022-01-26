@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            function get() {
+                var table = $('table');
+                var data = [];
+
+                table.find('tr').each(function (i, el) {
+                    // no thead
+                    if (i != 0) {
+                        var $tds = $(this).find('td');
+                        var row = [];
+                        $tds.each(function (i, el) {
+                            row.push($(this).text());
+                        });
+                        data.push(row);
+                    }
+
+                });
+                return data;
+            }
+
+            console.log(get());
+
+        });
+
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>field1</th>
+                <th>field2</th>
+                <th>field3</th>
+                <th>field4</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>1</td>
+            <td>aaa</td>
+            <td>aaa</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>bbb</td>
+            <td>bbb</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>ccc</td>
+            <td>ccc</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>ddd</td>
+            <td>ddd</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

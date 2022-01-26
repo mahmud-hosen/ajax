@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="jquery.js"></script>
+    <title>Document</title>
+    <script>
+
+        var info2 = {
+            "person1": {
+                "name": "Mahmud",
+                "age": 20,
+                "location": "Dhaka"
+            },
+            "persion2": {
+                "name": "Jamal",
+                "age": 22,
+                "location": "Datta Para"
+            },
+            "persion3": {
+                "name": "Kamal",
+                "age": 23,
+                "name": "Ashulia"
+            },
+        };
+
+
+
+        //  console.log(info2)
+
+
+
+
+
+          // Array 2
+        let i = 0;
+        let j = 0;
+        let k = 2;
+
+        let activities=[i][j];
+
+        activities[0][0] = "Habib"
+        // activities[1][0] = 'Kamal';
+
+        console.log(activities[0][0])
+
+
+
+        var info = {
+            [i]: {
+                [i]: "Mahmud",
+                "age": 20,
+                "location": "Dhaka"
+            },
+            [j]: {
+                "name": "Jamal",
+                "age": 22,
+                "location": "Datta Para"
+            },
+            [k]: {
+                "name": "Kamal",
+                "age": 23,
+                "name": "Ashulia"
+            },
+        };
+
+        info[0][3]="kaka"
+        info[0][4] = "lala"
+         info[1][0] = "mama"
+
+
+
+        $(document).ready(function () {
+
+            var rows = $('table>tbody>tr'); // all browsers always create the tbody element in DOM
+            for (var i = 0; i < (rows.length); i++) {
+
+
+                var cells = rows.eq(i).children('td');
+                for (var j = 0; j < ((cells.length)); j++) {
+                    // var titleId = cells.eq(j).find('input').val();
+                    var value = cells.eq(j).text();
+
+                    // alert(value)
+
+                }
+            }
+
+        });
+
+
+
+
+
+    </script>
+</head>
+
+
+<body>
+
+    <table id="mytable" border="1">
+        <tr>
+            <td>Jamal</td>
+            <td>Kamal</td>
+        </tr>
+        <tr>
+            <td>Habib</td>
+            <td>20</td>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        $(document).ready(function () {
+
+            $("select.quiz").change(function () {
+                var selectquiz = $(this).children("option:selected").val();
+                //  alert(selectquiz);
+                if (selectquiz == "quiz-1") {
+
+                    $(".quiz-1").show();
+                    $(".quiz-2").hide();
+                    $(".quiz-3").hide();
+                    
+
+                } else if (selectquiz == "quiz-2") {
+                    $(".quiz-1").hide();
+                    $(".quiz-2").show();
+                    $(".quiz-3").hide();
+
+                } else if (selectquiz == "quiz-3") {
+                    $(".quiz-1").hide();
+                    $(".quiz-2").hide();
+                    $(".quiz-3").show();
+
+                }
+
+            });
+
+
+
+            $(".btnquiz-1").click(function () {
+                $(".quiz-1").show();
+                $(".quiz-2").hide();
+                $(".quiz-3").hide();
+                
+
+            })
+
+            $(".btnquiz-2").click(function () {
+                $(".quiz-1").hide();
+                $(".quiz-2").show();
+                $(".quiz-3").hide();
+            })
+
+            $(".btnquiz-3").click(function () {
+                $(".quiz-1").hide();
+                $(".quiz-2").hide();
+                $(".quiz-3").show();
+            })
+
+              $(".quiz-1").hide();
+            $(".quiz-2").show();
+            $(".quiz-3").hide();
+
+        });
+
+        
+
+    </script>
+</head>
+
+<body>
+    <button class="btnquiz-1">Quiz-1</button>
+    <button class="btnquiz-2">Quiz-2</button>
+    <button class="btnquiz-3">Quiz-3</button>
+
+
+
+
+
+    <table border="1">
+        <tr>
+            <th colspan="3">
+                <select class="quiz">
+                    <option  value="quiz-1">Quiz-1</option>
+                    <option value="quiz-2">Quiz-2</option>
+                    <option value="quiz-3">Quiz-3</option>
+                </select>
+            </th>
+        </tr>
+        <tr>
+            <th  class="quiz-1">Quiz-1</th>
+            <th class="quiz-2">Quiz-2</th>
+            <th class="quiz-3">Quiz-3</th>
+        </tr>
+        <tr>
+            <td  class="quiz-1">20</td>
+            <td class="quiz-2">25</td>
+            <td class="quiz-3">80</td>
+        </tr>
+
+        <tr>
+            <td class="quiz-1">70</td>
+            <td class="quiz-2">50</td>
+            <td class="quiz-3">60</td>
+        </tr>
+
+        <tr>
+            <td class="quiz-1">90</td>
+            <td class="quiz-2">60</td>
+            <td class="quiz-3">20</td>
+        </tr>
+
+    </table>
+
+</body>
+
+</html>
+

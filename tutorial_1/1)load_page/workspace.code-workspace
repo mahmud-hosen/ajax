@@ -1,0 +1,31 @@
+{
+	"folders": [
+		{
+			"path": "E:\\Mahmud\\Programming Code\\CSS"
+		},
+		{
+			"path": "E:\\Mahmud\\Programming Code\\Java Script"
+		},
+		{
+			"path": "..\\..\\api"
+		},
+		{
+			"path": "..\\..\\php"
+		},
+		{
+			"path": "..\\..\\Test"
+		},
+		{
+			"path": "..\\..\\graphics"
+		},
+		{
+			"path": "E:\\Mahmud\\Programming Code\\Vue Js"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Vue Js"
+	}
+}
